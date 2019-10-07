@@ -1,6 +1,18 @@
 *{
     font-family: 'Amaranth', sans-serif;
 }
+.navbar {
+    background-color: transparent;
+}
+
+.nav{
+    text-align: center;
+    width: 40%;
+}
+
+.nav>p {
+    padding-left: 10%;
+}
 
 .w-100 {
     position: relative;
@@ -26,6 +38,7 @@
 
 .text {
     position: absolute;
+    font-size: 20px;
     color: white;
     bottom: 100%;
     left: 50%;
