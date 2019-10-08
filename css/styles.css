@@ -44,11 +44,13 @@ hr{
 input{
     width:65%;
     padding: 8px;
+    margin-left:50px;
 }
 
 textarea{
     width: 65%;
     padding:20px;
+    margin-left:50px;
 }
 
 .map{
@@ -58,7 +60,10 @@ textarea{
     
 }
 body{
-background-color: azure;
+background-color: azure;}
+
+.heading{
+    margin-left: 50px;  
 }
 
 .navbar {
