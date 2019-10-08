@@ -1,6 +1,11 @@
 *{
     font-family: 'Amaranth', sans-serif;
 }
+body{
+background-color: azure;
+}
+}
+
 .navbar {
     background-color: transparent;
 }
@@ -46,4 +51,5 @@
     opacity: 1;
     transform: translate(-50%, -50%);
 }
+
 
