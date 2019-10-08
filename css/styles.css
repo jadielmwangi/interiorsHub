@@ -1,6 +1,11 @@
 *{
     font-family: 'Amaranth', sans-serif;
 }
+body{
+background-color: azure;
+}
+
+
 
 .card-img-overlay{
   background-color: rgba(0, 0, 0, 0.2);
@@ -52,6 +57,10 @@ textarea{
     margin-top:15px;
     
 }
+body{
+background-color: azure;
+}
+
 .navbar {
     background-color: transparent;
 }
@@ -102,4 +111,5 @@ p>a, p>a:hover {
     opacity: 1;
     transform: translate(-50%, -50%);
 }
+
 
