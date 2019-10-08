@@ -52,6 +52,11 @@ textarea{
     margin-top:15px;
     
 }
+body{
+background-color: azure;
+}
+}
+
 .navbar {
     background-color: transparent;
 }
@@ -97,4 +102,5 @@ textarea{
     opacity: 1;
     transform: translate(-50%, -50%);
 }
+
 
