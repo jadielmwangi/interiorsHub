@@ -58,11 +58,16 @@ textarea{
 
 .nav{
     text-align: center;
-    width: 40%;
+    width: 50%;
 }
 
 .nav>p {
-    padding-left: 10%;
+    padding-left: 20px;
+}
+
+p>a, p>a:hover {
+    color: black;
+    text-decoration: none;
 }
 
 .w-100 {
