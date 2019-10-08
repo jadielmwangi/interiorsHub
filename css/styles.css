@@ -112,4 +112,7 @@ background-color: azure;}
     transform: translate(-50%, -50%);
 }
 
-
+#listings{
+ 
+    overflow: hidden;
+}
