@@ -3,3 +3,20 @@
     background-color: aliceblue;
 }
 
+input{
+    width:65%;
+    padding: 8px;
+}
+
+textarea{
+    width: 65%;
+    padding:20px;
+}
+
+.map{
+    height:500px;
+    width:80%;
+    margin-top:15px;
+    
+}
+
