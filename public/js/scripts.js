@@ -1,6 +1,7 @@
 // Sending Contact Message Function
 
 $(document).ready(() => { 
+  $(".myalert").hide() 
     //open modal on clicking upload
       $("#uploadTrigger").click(() => {
         $("#uploadModal").modal("show")
@@ -13,7 +14,7 @@ $(document).ready(() => {
   
   $("form").submit(() => {
     event.preventDefault()
- 
+    $("#insubmitButtonput").prop('disabled', true);
     handleFileUpload();   
    
   })
@@ -44,6 +45,7 @@ function uploadToFirebase(listing) {
       console.error("Error adding document:",error)
     })
   $("#uploadModal").modal("hide")
+  $(".myalert").show()            
  
 }
 // var selectedFile;

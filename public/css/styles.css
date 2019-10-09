@@ -118,3 +118,14 @@ p>a, p>a:hover {
  
     overflow: hidden;
 }
+
+.alert-success{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 1;
+  display: none;
+
+}
