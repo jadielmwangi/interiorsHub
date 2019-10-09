@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css  ">
     <link href="https://fonts.googleapis.com/css?family=Amaranth&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./bootstrap/js/bootstrap.js"></script>
-
-    <script src="./js/scripts.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
     <title>Interiors Hub</title>
@@ -251,14 +249,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form id="upload-button">
                         <form-group>
                             <label for="inputCompany">Company Name</label>
-                            <input type="email" class="form-control " id="uploadEmail" placeholder="Enter Company's Name">
+                            <input type="text" class="form-control " id="companyName" placeholder="Enter Company's Name"
+                                required>
                         </form-group>
                         <form-group>
                             <label for="category"> Category</label>
-                            <select name="category" id="category" class="form-control ">
+                            <select name="category" id="companyCategory" class="form-control ">
                                 <option value="Bathrooms">Bathrooms</option>
                                 <option value="Kitchen">Kitchen</option>
                                 <option value="Lounge">Lounge</option>
@@ -267,29 +266,61 @@
                         </form-group>
                         <form-group>
                             <label for="location">Location</label>
-                            <input type="text" name="location" class="form-control" placeholder="Enter your Location">
+                            <input type="text" id="companyLocation" name="location" class="form-control"
+                                placeholder="Enter your Location" required>
                         </form-group>
                         <form-group>
                             <label for="works">Works</label>
-                            <input type="file" class="form-control" placeholder="Upload Image">
+                            <input type="file"accept="image/*"   class="form-control" id="companyWorks" placeholder="Upload Image"
+                                required>
                         </form-group>
                         <form-group>
                             <label for="phone">Phone</label>
-                            <input type="phone" class="form-control" placeholder="Enter your phone no.">
+                            <input type="phone" id="companyPhone" class="form-control"
+                                placeholder="Enter your phone no." required>
                         </form-group>
-                        
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary ">Save </button>
+                    <button type="submit" class="btn btn-primary">Save </button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
     </div>
 
-    
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.1.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.1.0/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/7.1.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.1.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.1.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/7.1.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+    <!-- Initialize Firebase -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBRwfPcjp7_E1d4CRyjJ5FaO79NHH2v3TM",
+            authDomain: "chat-165ca.firebaseapp.com",
+            databaseURL: "https://chat-165ca.firebaseio.com",
+            projectId: "chat-165ca",
+            storageBucket: "chat-165ca.appspot.com",
+            messagingSenderId: "396002922263",
+            appId: "1:396002922263:web:c6889fd02506e7abcff152",
+            measurementId: "G-ERM4YTXBLP"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        const storageService=firebase.storage();
+        const storageRef=storageService.ref()
+    </script>
+    <script src="./js/scripts.js"></script>
 </body>
 
 </html>
