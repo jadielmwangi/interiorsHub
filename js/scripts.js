@@ -1,8 +1,7 @@
 // Sending Contact Message Function
 $(document).ready(() => { 
     //open modal on clicking upload
-    alert(1)
-    $("#uploadTrigger").click(() => {
+      $("#uploadTrigger").click(() => {
         $("#uploadModal").modal("show")
     })
     $("form").submit(function(event){

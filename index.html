@@ -192,22 +192,22 @@
                 <form id="contactForm">
                     <div class="form-group">
                         <h2 div class="heading">Name</h2>
-                    <input type="text" id="name" name="Name" placeholder="Write Your Name ...." required>
+                    <input type="text" id="name" name="Name" class="input" placeholder="Write Your Name ...." required>
                     </div>
                     <div class="form-group">
                     <h2 div class="heading">Email</h2>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="email" id="email" name="email" class="input" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                     <h2 div class="heading">Phone Number</h2>
-                    <input type="tel"  id="phone" name="phone"  required>
+                    <input type="tel"  id="phone" name="phone" class="input" required>
                     </div>
                     <div class="form-group">
                     <h2 div class="heading">Subject</h2>
-                    <textarea id="subject" name="subject" placeholder="Write Your Message here ..."></textarea>
+                    <textarea id="subject" name="subject" class="input" placeholder="Write Your Message here ..."></textarea>
                     </div>
                     <div class="form-group">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit" class="input">
                     </div>
                 </form>
             </div>
@@ -229,16 +229,20 @@
 
     <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModal" aria-hidden="true"> 
      <div class="modal-dialog" role="dialog">
-         <div class="modal-content">
+         <div class="modal-content container-fluid">
              <div class="modal-header">
-                 <div class="modal-title">
-                     <h5></h5>
+                     <h5 class="modal-title">Add Listing</h5>
                      <button class="close"data-dismiss="modal" aria-label="Close" >
-                         <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                      </button>
-                 </div>
-                 <div class="modal-body">
-                     ...
+             </div>
+                 <div class="modal-body" >
+                    <form action="">
+                        <form-group>
+                            <label for="inputCompany">Company Name</label>
+                            <input type="email" class="form-control uploadEmail" placeholder="Company Name">
+                        </form-group>
+                    </form>
                  </div>
                  <div class="modal-footer">
                      <button type="button" class="btn btn-secondary">Close</button>
