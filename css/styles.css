@@ -4,9 +4,6 @@
 body{
 background-color: azure;
 }
-
-
-
 .card-img-overlay{
   background-color: rgba(0, 0, 0, 0.2);
  height: 3rem;
