@@ -6,9 +6,8 @@
 Interiors hub work with designers who specializes in incorporating innovative products and concepts that are simply stunning and often outshine the industry standards.
 Viewers are given the chance to choose among the best designer and contact them if they need their services.
 ## Project live site
-  This is the live link .[ https://github.com/margaret254/pizza ]()
-
-  ![Image](images/Screenshot from 2019-10-09 16-15-33.png)
+  This is the live link .[ https://chat-165ca.firebaseapp.com/ ]()
+ 
   ![Image](images/Screenshot from 2019-10-09 16-15-40.png)
 
 ## Setup instructions
