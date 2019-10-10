@@ -1,26 +1,46 @@
-$(document).ready(() => { 
-  populateUI()
-  $(".myalert").hide() 
-    //open modal on clicking upload
-      $("#uploadTrigger").click(() => {
-        $("#uploadModal").modal("show")
-    })
-    
-  $("form#uploadForm").submit(() => {
-    event.preventDefault();
-    $("#insubmitButtonput").prop("disabled", true);
-    handleFileUpload();
-   });
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyBRwfPcjp7_E1d4CRyjJ5FaO79NHH2v3TM",
+  authDomain: "chat-165ca.firebaseapp.com",
+  databaseURL: "https://chat-165ca.firebaseio.com",
+  projectId: "chat-165ca",
+  storageBucket: "chat-165ca.appspot.com",
+  messagingSenderId: "396002922263",
+  appId: "1:396002922263:web:c6889fd02506e7abcff152",
+  measurementId: "G-ERM4YTXBLP"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const storageService = firebase.storage();
+const storageRef = storageService.ref();
 
-  $("form#contactForm").submit(() => {
-    event.preventDefault();
-    alert("We have received your message")
- 
+$(document).ready(() => {
+  //call function to pull data from server and fill the cards
+  populateUI();
+
+  //hide success alert
+  $(".myalert").hide();
+
+  //open modal on clicking upload menu option
+  $("#uploadTrigger").click(() => {
+    $("#uploadModal").modal("show");
   });
 
+  //attach listener when upload form is submitted
+  $("form#uploadForm").submit(() => {
+    event.preventDefault();
+    handleFileUpload();
+  });
+
+  //attach listener when contact form is submitted
+  $("form#contactForm").submit(() => {
+    event.preventDefault();
+    alert("We have received your message");
+  });
 });
 
-function Listing(name, category, location, works,phone) {
+//listings constructor
+function Listing(name, category, location, works, phone) {
   this.name = name;
   this.category = category;
   this.location = location;
@@ -28,71 +48,79 @@ function Listing(name, category, location, works,phone) {
   this.phone = phone;
 }
 
-function uploadToFirebase(listing) { 
-  var db = firebase.firestore()
-  db.collection("listings").add({
-    name: listing.name,
-    category: listing.category,
-    location: listing.location,
-    works: listing.works,
-    phone:listing.phone
-  })
-    .then(function (docRef) { 
- console.log("Document written with ID:",docRef.id);
+//upload Listing object
+function uploadToFirebase(listing) {
+  var db = firebase.firestore();
+  db.collection("listings")
+    .add({
+      name: listing.name,
+      category: listing.category,
+      location: listing.location,
+      works: listing.works,
+      phone: listing.phone
     })
-    .catch(function (error) { 
-      console.error("Error adding document:",error)
+    .then(function(docRef) {
+      console.log("Document written with ID:", docRef.id);
     })
-  $("#uploadModal").modal("hide")
-     $("#companyName").val(" ");
-     $("#companyCategory").val(" ");
-   $("#companyLocation").val(" ");
-     $("#companyPhone").val(" ");
-  $("#companyWorks").val("");
-  $(".myalert").show()  
+    .catch(function(error) {
+      console.error("Error adding document:", error);
+    });
 
- 
+  //reset input fields after uploading
+  $("#uploadModal").modal("hide");
+  $("#companyName").val(" ");
+  $("#companyCategory").val(" ");
+  $("#companyLocation").val(" ");
+  $("#companyPhone").val(" ");
+  $("#companyWorks").val("");
+  $(".myalert").show();
 }
 
+//obtain data from form and create a Listing object from it
 function handleFileUpload() {
-  var companyName = $("#companyName").val()
-  var companyCategory = $("#companyCategory").val()
-  var location = $("#companyLocation").val() 
+  var companyName = $("#companyName").val();
+  var companyCategory = $("#companyCategory").val();
+  var location = $("#companyLocation").val();
   var phone = $("#companyPhone").val();
   var selectedFile = $("#companyWorks")[0].files[0];
-  var url;
-  console.log(selectedFile)
-   var uploadTask =
-     storageRef.child(`images/${selectedFile.name}`).put(selectedFile);
-    uploadTask.on('state_changed', function(snapshot){
-    console.log("Uploaded a blob or");
-    console.log(snapshot.task);   
-        
-  }, (error) => {
-    console.log(error);
-      }, function () {
-     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-       console.log('File available at', downloadURL);
-       var listing = new Listing(companyName, companyCategory, location, downloadURL, phone);
-       console.log(listing);   
-      uploadToFirebase(listing) 
-       
-     }).then((url) => {     
-     
-       
-      })
-       
-      })
-  
- 
-  }
 
+  //upload image and obtai downloadURL to be stored in firestore
+  var uploadTask = storageRef
+    .child(`images/${selectedFile.name}`)
+    .put(selectedFile);
+  uploadTask.on(
+    "state_changed",
+    function(snapshot) {},
+    error => {
+      console.log(error);
+    },
+    function() {
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        var listing = new Listing(
+          companyName,
+          companyCategory,
+          location,
+          downloadURL,
+          phone
+        );
+        uploadToFirebase(listing);
+      });
+    }
+  );
+}
+
+//function to obtain server data and populate cards
 function populateUI() {
-  const ref = db.collection("listings")
-  ref.get().then(function (querySnapshot) { 
-    querySnapshot.docs.forEach(function (doc) {
-      var listingFromDb = new Listing(doc.data()["name"], doc.data()["category"], doc.data()["location"], doc.data()["works"], doc.data()["phone"])
-      console.log(doc.data());
+  const ref = db.collection("listings");
+  ref.get().then(function(querySnapshot) {
+    querySnapshot.docs.forEach(function(doc) {
+      var listingFromDb = new Listing(
+        doc.data()["name"],
+        doc.data()["category"],
+        doc.data()["location"],
+        doc.data()["works"],
+        doc.data()["phone"]
+      );
       $("#listing-row").append(`
          <div class="card text-center mt-2" style="width:22rem">
                 <img src="${listingFromDb.works}"
@@ -117,8 +145,7 @@ function populateUI() {
                     </div>
                 </div>
             </div>
-
       `);
-    })
-  })
+    });
+  });
 }
