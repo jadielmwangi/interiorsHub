@@ -1,4 +1,3 @@
-git
 # INTERIORS HUB
 #### This is a Website where interiors designers upload their works and viewers are able to view at one central point and get to choose and contact the best designers.
 ##### By **Margaret254,Njoroge33,marysinaida,ibrahnerd7**&trade;
