@@ -1,5 +1,3 @@
-// Sending Contact Message Function
-
 $(document).ready(() => { 
   populateUI()
   $(".myalert").hide() 
@@ -7,18 +5,18 @@ $(document).ready(() => {
       $("#uploadTrigger").click(() => {
         $("#uploadModal").modal("show")
     })
-    // $("form").submit(function(event){
-    //     eventPreventDefault();
-    //     var name = $("#name").val();
-    //       alert("Hello "  + name + ",Thanks for reaching to us. We have received your message.");
-    // });
-  
-  $("form").submit(() => {
-    event.preventDefault()
-    $("#insubmitButtonput").prop('disabled', true);
-    handleFileUpload();   
-   
-  })
+    
+  $("form#uploadForm").submit(() => {
+    event.preventDefault();
+    $("#insubmitButtonput").prop("disabled", true);
+    handleFileUpload();
+   });
+
+  $("form#contactForm").submit(() => {
+    event.preventDefault();
+    alert("We have received your message")
+ 
+  });
 
 });
 
@@ -46,22 +44,21 @@ function uploadToFirebase(listing) {
       console.error("Error adding document:",error)
     })
   $("#uploadModal").modal("hide")
-  $(".myalert").show()            
+     $("#companyName").val(" ");
+     $("#companyCategory").val(" ");
+   $("#companyLocation").val(" ");
+     $("#companyPhone").val(" ");
+  $("#companyWorks").val("");
+  $(".myalert").show()  
+
  
 }
-// var selectedFile;
-// function handleFileUploadChange() {
-//   // selectedFile = $("#companyWorks")[0].files[0];
-//   handleFileUpload(selectedFile)
-// }
 
 function handleFileUpload() {
   var companyName = $("#companyName").val()
   var companyCategory = $("#companyCategory").val()
-  var location = $("#companyLocation").val()
- 
+  var location = $("#companyLocation").val() 
   var phone = $("#companyPhone").val();
-
   var selectedFile = $("#companyWorks")[0].files[0];
   var url;
   console.log(selectedFile)
@@ -88,8 +85,7 @@ function handleFileUpload() {
       })
   
  
-  // uploadToFirebase(listing)
-}
+  }
 
 function populateUI() {
   const ref = db.collection("listings")

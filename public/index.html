@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMirrzTauTeJmHwT-VQJkrTQsQBJGVYsg&amp;libraries=places"></script>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css  ">
     <link href="https://fonts.googleapis.com/css?family=Amaranth&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,8 +21,8 @@
 <!--Alert section-->
 <div class="alert alert-success alert-dismissible fade show myalert" role="alert">
     Success<br>Your listing has been posted
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+        <span aria-hidden="true" >&times;</span>
     </button>
 </div>
 
@@ -190,7 +192,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="upload-button">
+                    <form id="uploadForm">
                         <form-group>
                             <label for="inputCompany">Company Name</label>
                             <input type="text" class="form-control " id="companyName" placeholder="Enter Company's Name"
@@ -209,7 +211,8 @@
                             <label for="location">Location</label>
                             <div id="custom-search-input">
                                 <div class="input-group">
-                                    <input id="companyLocation" name="autocomplete_search" type="text" class="form-control"
+                                <div class="input-group">
+                                    <input id="companyLocation" name="" type="text" class="form-control"
                                         placeholder="Search" />
                                     <input type="hidden" name="lat">
                                     <input type="hidden" name="long">
@@ -268,7 +271,12 @@
         
         const storageService=firebase.storage();
         const storageRef=storageService.ref()
-    </script>
+    </script> 
+
+<script>
+  
+</script>
+
     <script src="./js/scripts.js"></script>
 </body>
 
