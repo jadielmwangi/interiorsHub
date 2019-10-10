@@ -1,6 +1,7 @@
 // Sending Contact Message Function
 
 $(document).ready(() => { 
+  populateUI()
   $(".myalert").hide() 
     //open modal on clicking upload
       $("#uploadTrigger").click(() => {
@@ -88,4 +89,40 @@ function handleFileUpload() {
   
  
   // uploadToFirebase(listing)
+}
+
+function populateUI() {
+  const ref = db.collection("listings")
+  ref.get().then(function (querySnapshot) { 
+    querySnapshot.docs.forEach(function (doc) {
+      var listingFromDb = new Listing(doc.data()["name"], doc.data()["category"], doc.data()["location"], doc.data()["works"], doc.data()["phone"])
+      console.log(doc.data());
+      $("#listing-row").append(`
+         <div class="card text-center mt-2" style="width:22rem">
+                <img src="${listingFromDb.works}"
+                    class="card-img-top" height="250rem">
+                <div class="card-body">
+                    <img src="./images/folder.png" id="folder-icon" alt="Folder Icon">
+                    <p id="category">${listingFromDb.category}</p>
+                    <br>
+                    <hr>
+                    <div class="card-text d-flex flex-column">
+                        <div>
+                            <i class="fa fa-location-arrow text-muted mt-1 myicons" aria-hidden="true"></i>
+                            <span class="text-muted location">${listingFromDb.location}</span>
+                        </div>
+                        <div class="mt-2">
+                            <i class="fa fa-phone text-muted myicons" aria-hidden="true"></i>
+                            <small class="text-muted phone">${listingFromDb.phone}</small>
+                        </div>
+                        <div class="card-img-overlay text-white ml-auto">
+                            <p class="text-bold">${listingFromDb.name}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      `);
+    })
+  })
 }
