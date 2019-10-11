@@ -1,14 +1,4 @@
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyBRwfPcjp7_E1d4CRyjJ5FaO79NHH2v3TM",
-  authDomain: "chat-165ca.firebaseapp.com",
-  databaseURL: "https://chat-165ca.firebaseio.com",
-  projectId: "chat-165ca",
-  storageBucket: "chat-165ca.appspot.com",
-  messagingSenderId: "396002922263",
-  appId: "1:396002922263:web:c6889fd02506e7abcff152",
-  measurementId: "G-ERM4YTXBLP"
-};
+
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const storageService = firebase.storage();
